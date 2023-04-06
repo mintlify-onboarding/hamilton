@@ -1,8 +1,8 @@
 {
     "name": "Hamilton",
     "logo": {
-      "light": "/logo/light.svg",
-      "dark": "/logo/dark.svg"
+      "light": "/logo/light.png",
+      "dark": "/logo/dark.png"
     },
     "favicon": "/favicon.png",
     "colors": {
@@ -19,6 +19,11 @@
         "name": "Slack",
         "icon": "slack",
         "url": "https://join.slack.com/t/hamilton-opensource/shared_invite/zt-1bjs72asx-wcUTgH7q7QX1igiQ5bbdcg"
+      },
+      {
+        "name": "Downloads",
+        "icon": "download",
+        "url": "https://pepy.tech/project/sf-hamilton"
       }
     ],
     "navigation": [
