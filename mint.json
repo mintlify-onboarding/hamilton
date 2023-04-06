@@ -6,9 +6,9 @@
     },
     "favicon": "/favicon.png",
     "colors": {
-      "primary": "#",
-      "light": "#",
-      "dark": "#"
+      "primary": "#FB8F09",
+      "light": "#FFB559",
+      "dark": "#FF6C07"
     },
     "topbarCtaButton": {
       "type": "github",
@@ -28,13 +28,12 @@
     ],
     "navigation": [
       {
-        "group": "",
-        "pages": [""]
+        "group": "Introduction",
+        "pages": ["intro"]
       }
     ],
     "footerSocials":
       {
-          "twitter": "",
-          "linkedin": ""
+          "twitter": "https://twitter.com/hamilton_os"
       }
   }
