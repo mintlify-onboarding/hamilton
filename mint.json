@@ -30,6 +30,16 @@
       {
         "group": "Introduction",
         "pages": ["intro"]
+      },
+      {
+        "group": "Getting Started",
+        "pages": [
+            "getting-started/overview",
+            "getting-started/installing",
+            "getting-started/writing-first-dataflow",
+            "getting-started/running-dataflow",
+            "getting-started/next-steps"
+        ]
       }
     ],
     "footerSocials":
