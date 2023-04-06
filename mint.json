@@ -1,0 +1,35 @@
+{
+    "name": "Hamilton",
+    "logo": {
+      "light": "/logo/light.svg",
+      "dark": "/logo/dark.svg"
+    },
+    "favicon": "/favicon.png",
+    "colors": {
+      "primary": "#",
+      "light": "#",
+      "dark": "#"
+    },
+    "topbarCtaButton": {
+      "type": "github",
+      "url": "https://github.com/DAGWorks-Inc/hamilton"
+    },
+    "anchors": [
+      {
+        "name": "Slack",
+        "icon": "slack",
+        "url": "https://join.slack.com/t/hamilton-opensource/shared_invite/zt-1bjs72asx-wcUTgH7q7QX1igiQ5bbdcg"
+      }
+    ],
+    "navigation": [
+      {
+        "group": "",
+        "pages": [""]
+      }
+    ],
+    "footerSocials":
+      {
+          "twitter": "",
+          "linkedin": ""
+      }
+  }
