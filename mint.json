@@ -63,6 +63,20 @@
         "overview-of-concepts/comparison-to-other-frameworks",
         "overview-of-concepts/extensions"
       ]
+    },
+    {
+      "group": "How To Guides",
+      "pages": [
+        "how-to-guides/load-external-data",
+        "how-to-guides/use-hamilton-without-pandas",
+        "how-to-guides/using-hamilton-in-a-notebook",
+        "how-to-guides/run-data-quality-checks",
+        "how-to-guides/run-hamilton-at-scale",
+        "how-to-guides/use-hamilton-for-model-training",
+        "how-to-guides/use-hamilton-with-dbt",
+        "how-to-guides/run-hamilton-in-a-microservice",
+        "how-to-guides/use-hamilton-for-feature-engineering"
+      ]
     }
   ],
   "footerSocials": {
