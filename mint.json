@@ -40,6 +40,30 @@
             "getting-started/running-dataflow",
             "getting-started/next-steps"
         ]
+      },
+      {
+        "group": "Overview of concepts",
+        "pages": [
+            "overview-of-concepts/overview",
+            "overview-of-concepts/lexicon",
+            "overview-of-concepts/hamilton-functions",
+            "overview-of-concepts/running-your-code",
+            "overview-of-concepts/customizing-execution",
+            "overview-of-concepts/overview-of-decorators",
+            {
+              "group": "Best Practices",
+              "pages": [
+                  "overview-of-concepts/best-practices/migrating-to-hamilton",
+                  "overview-of-concepts/best-practices/function-naming",
+                  "overview-of-concepts/best-practices/code-organization",
+                  "overview-of-concepts/best-practices/function-modifiers",
+                  "overview-of-concepts/best-practices/common-indices",
+                  "overview-of-concepts/best-practices/output-immutability"
+              ]
+            },
+            "overview-of-concepts/comparison-to-other-frameworks",
+            "overview-of-concepts/extensions"
+        ]
       }
     ],
     "footerSocials":
