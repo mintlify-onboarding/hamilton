@@ -16,14 +16,19 @@
   },
   "anchors": [
     {
+      "name": "API Reference",
+      "icon": "square-terminal",
+      "url": "api-reference"
+    },
+    {
+      "name": "GitHub",
+      "icon": "github",
+      "url": "https://github.com/dagworks-inc/hamilton"
+    },
+    {
       "name": "Slack",
       "icon": "slack",
       "url": "https://join.slack.com/t/hamilton-opensource/shared_invite/zt-1bjs72asx-wcUTgH7q7QX1igiQ5bbdcg"
-    },
-    {
-      "name": "Downloads",
-      "icon": "download",
-      "url": "https://pepy.tech/project/sf-hamilton"
     }
   ],
   "navigation": [
