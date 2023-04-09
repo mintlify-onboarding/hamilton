@@ -77,6 +77,15 @@
         "how-to-guides/run-hamilton-in-a-microservice",
         "how-to-guides/use-hamilton-for-feature-engineering"
       ]
+    },
+    {
+      "group": "Other Docs",
+      "pages": [
+        "talks-blogs-podcasts",
+        "hamilton-community",
+        "license",
+        "contributing"
+      ]
     }
   ],
   "footerSocials": {
