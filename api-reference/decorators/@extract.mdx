@@ -1,0 +1,61 @@
+---
+title: "@extract*"
+sidebarTitle: "@extract"
+---
+
+```
+class hamilton.function_modifiers.extract_columns(*columns: Union[Tuple[str, str], str], fill_with: Any = None)
+```
+
+```
+__init__(*columns: Union[Tuple[str, str], str], fill_with: Any = None)
+```
+
+Constructor for a modifier that expands a single function into the following
+nodes:
+
+- n functions, each of which take in the original dataframe and output a
+  specific column
+- 1 function that outputs the original dataframe
+
+#### Parameters
+
+<ParamField body="columns">
+  Columns to extract, that can be a list of tuples of (name, documentation) or
+  just names.
+</ParamField>
+
+<ParamField body="fill_with">
+  If you want to extract a column that doesn’t exist, do you want to fill it
+  with a default value? Or do you want to error out? Leave empty/None to error
+  out, set fill_value to dynamically create a column.
+</ParamField>
+
+```
+class hamilton.function_modifiers.extract_fields(fields: dict, fill_with: Any = None)
+```
+
+Extracts fields from a dictionary of output.
+
+```
+__init__(fields: dict, fill_with: Any = None)
+```
+
+Constructor for a modifier that expands a single function into the following
+nodes:
+
+- n functions, each of which take in the original dict and output a specific
+  field
+- 1 function that outputs the original dict
+
+#### Parameters
+
+<ParamField body="fields">
+  Fields to extract. A dict of ‘field_name’ -> ‘field_type’.
+</ParamField>
+
+<ParamField body="fill_with">
+  If you want to extract a field that doesn’t exist, do you want to fill it with
+  a default value? Or do you want to error out? Leave empty/None to error out,
+  set fill_value to dynamically create a field value.
+</ParamField>
