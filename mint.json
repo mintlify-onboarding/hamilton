@@ -95,7 +95,22 @@
     {
       "group": "API Reference",
       "pages": [
-        "api-reference/decorators",
+        {
+          "group": "Decorators",
+          "pages": [
+            "api-reference/decorators",
+            "api-reference/decorators/@config",
+            "api-reference/decorators/@tag",
+            "api-reference/decorators/@extract",
+            "api-reference/decorators/@check_output",
+            "api-reference/decorators/@parameterize",
+            "api-reference/decorators/@inject",
+            "api-reference/decorators/@does",
+            "api-reference/decorators/@subdag",
+            "api-reference/decorators/@subdag",
+            "api-reference/decorators/@resolve"
+          ]
+        },
         "api-reference/result-builders",
         "api-reference/graph-adapters",
         "api-reference/drivers",
