@@ -91,6 +91,26 @@
         "license",
         "contributing"
       ]
+    },
+    {
+      "group": "API Reference",
+      "pages": [
+        "api-reference/decorators",
+        "api-reference/result-builders",
+        "api-reference/graph-adapters",
+        "api-reference/drivers",
+        "api-reference/disabling-telemetry",
+        "api-reference/caveats"
+      ]
+    },
+    {
+      "group": "API Extensions",
+      "pages": [
+        "api-reference/custom-result-builders",
+        "api-reference/custom-graph-adapters",
+        "api-reference/customer-drivers",
+        "api-reference/custom-decorators"
+      ]
     }
   ],
   "footerSocials": {
