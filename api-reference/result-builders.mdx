@@ -1,0 +1,209 @@
+---
+title: "Result Builders"
+description:
+  "Result builders help you augment what is returned by the driver’s execute()
+  function."
+---
+
+Here we list what is available:
+
+## Generic
+
+```
+class hamilton.base.ResultMixin
+```
+
+Abstract base class housing the static function.
+
+Why a static function? That’s because certain frameworks can only pickle a
+static function, not an entire object.
+
+All result builders should inherit from this class and implement the
+build_result function.
+
+    ```
+    abstract static build_result(**outputs: Dict[str, Any]) → Any
+    ```
+
+        This function builds the result given the computed values.
+
+```
+class hamilton.base.DictResult
+```
+
+Simple function that returns the dict of column -> value results.
+
+It returns the results as a dictionary, where the keys map to outputs requested,
+and values map to what was computed for those values.
+
+Use this when you want to:
+
+<Info>
+  1. debug dataflows. 2. have heterogeneous return types. 3. Want to manually
+  transform the result into something of your choosing.
+</Info>
+
+```py
+from hamilton import base, driver
+dict_builder = base.DictResult()
+adapter = base.SimplePythonGraphAdapter(dict_builder)
+dr =  driver.Driver(config, *modules, adapter=adapter)
+dict_result = dr.execute([...], inputs=...)
+```
+
+```
+static build_result(**outputs: Dict[str, Any]) → Dict
+```
+
+This function builds a simple dict of output -> computed values.
+
+## Pandas
+
+```
+class hamilton.base.PandasDataFrameResult
+```
+
+Mixin for building a pandas dataframe from the result.
+
+It returns the results as a Pandas Dataframe, where the columns map to outputs
+requested, and values map to what was computed for those values. Note: this only
+works if the computed values are pandas series, or scalar values.
+
+Use this when you want to create a pandas dataframe.
+
+```py Example
+from hamilton import base, driver
+default_builder = base.PandasDataFrameResult()
+adapter = base.SimplePythonGraphAdapter(default_builder)
+dr =  driver.Driver(config, *modules, adapter=adapter)
+df = dr.execute([...], inputs=...)
+```
+
+```
+static build_result(**outputs: Dict[str, Any]) → DataFrame
+```
+
+Builds a Pandas DataFrame from the outputs.
+
+This function will check the index types of the outputs, and log warnings if
+they don’t match. The behavior of pd.Dataframe(outputs) is that it will do an
+outer join based on indexes of the Series passed in.
+
+#### Parameters
+
+<ParamField body="outputs">the outputs to build a dataframe from.</ParamField>
+
+```
+class hamilton.base.StrictIndexTypePandasDataFrameResult
+```
+
+A ResultBuilder that produces a dataframe only if the index types match exactly.
+
+Note: If there is no index type on some outputs, e.g. the value is a scalar, as
+long as there exists a single pandas index type, no error will be thrown,
+because a dataframe can be easily created.
+
+Use this when you want to create a pandas dataframe from the outputs, but you
+want to ensure that the index types match exactly.
+
+To use:
+
+```py
+from hamilton import base, driver
+strict_builder = base.StrictIndexTypePandasDataFrameResult()
+adapter = base.SimplePythonGraphAdapter(strict_builder)
+dr =  driver.Driver(config, *modules, adapter=adapter)
+df = dr.execute([...], inputs=...)  # this will now error if index types mismatch.
+```
+
+```
+static build_result(**outputs: Dict[str, Any]) → DataFrame
+```
+
+Builds a Pandas DataFrame from the outputs.
+
+This function will check the index types of the outputs, and log warnings if
+they don’t match. The behavior of pd.Dataframe(outputs) is that it will do an
+outer join based on indexes of the Series passed in.
+
+#### Parameters
+
+<ParamField body="outputs">the outputs to build a dataframe from.</ParamField>
+
+## Numpy
+
+```
+class hamilton.base.NumpyMatrixResult
+```
+
+Mixin for building a Numpy Matrix from the result of walking the graph.
+
+All inputs to the build_result function are expected to be numpy arrays.
+
+```py
+from hamilton import base, driver
+adapter = base.SimplePythonGraphAdapter(base.NumpyMatrixResult())
+dr = driver.Driver(config, *modules, adapter=adapter)
+numpy_matrix = dr.execute([...], inputs=...)
+```
+
+```
+static build_result(**outputs: Dict[str, Any]) → matrix
+```
+
+Builds a numpy matrix from the passed in, inputs.
+
+Note: this does not check that the inputs are all numpy arrays/array like
+things.
+
+#### Parameters
+
+<ParamField body="outputs">function_name -> np.array.</ParamField>
+
+#### Returns
+
+numpy matrix
+
+## Polars
+
+```
+class hamilton.plugins.polars_implementations.PolarsDataFrameResult
+```
+
+A ResultBuilder that produces a polars dataframe.
+
+Use this when you want to create a polars dataframe from the outputs. Caveat:
+you need to ensure that the length of the outputs is the same, otherwise you
+will get an error; mixed outputs aren’t that well handled.
+
+To use:
+
+```py
+from hamilton import base, driver
+from hamilton.plugins import polars_extensions
+polars_builder = polars_extensions.PolarsDataFrameResult()
+adapter = base.SimplePythonGraphAdapter(polars_builder)
+dr =  driver.Driver(config, *modules, adapter=adapter)
+df = dr.execute([...], inputs=...)  # returns polars dataframe
+```
+
+Note: this is just a first attempt at something for Polars. Think it should
+handle more? Come chat/open a PR!
+
+```
+build_result(**outputs: Dict[str, Union[Series, DataFrame, Any]]) → DataFrame
+```
+
+This is the method that Hamilton will call to build the final result. It will
+pass in the results of the requested outputs that you passed in to the execute()
+method.
+
+Note: this function could do smarter things; looking for contributions here!
+
+#### Parameters
+
+<ParamField body="outputs">The results of the requested outputs.</ParamField>
+
+#### Returns
+
+a polars DataFrame.
