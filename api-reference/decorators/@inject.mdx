@@ -1,0 +1,49 @@
+---
+title: "@inject"
+description: "@inject allows you to replace parameters with values passed in."
+---
+
+You can think of it as a _@parameterize_ call that has only one
+parameterization, the result of which is the name of the function. See the
+following examples:
+
+```
+class hamilton.function_modifiers.inject(**key_mapping: ParametrizedDependency)
+```
+
+```py
+import pandas as pd
+from function_modifiers import inject, source, value, group
+
+@inject(nums=group(source('a'), value(10), source('b'), value(2)))
+def a_plus_10_plus_b_plus_2(nums: List[int]) -> int:
+    return sum(nums)
+
+This would be equivalent to:
+
+@parameterize(
+    a_plus_10_plus_b_plus_2={
+        'nums': group(source('a'), value(10), source('b'), value(2))
+    })
+def sum_numbers(nums: List[int]) -> int:
+    return sum(nums)
+```
+
+Something to note – we currently do not support the case in which the same
+parameter is utilized multiple times as an injection. E.G. two lists, a list and
+a dict, two sources, etc…
+
+This is considered undefined behavior, and should be avoided.
+
+```
+__init__(**key_mapping: ParametrizedDependency)
+```
+
+Instantiates an @inject decorator with the given key_mapping.
+
+#### Parameters
+
+<ParamField body="key_mapping">
+  A dictionary of string to dependency spec. This is the same as the input
+  mapping in @parameterize.
+</ParamField>

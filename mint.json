@@ -107,7 +107,7 @@
             "api-reference/decorators/@inject",
             "api-reference/decorators/@does",
             "api-reference/decorators/@subdag",
-            "api-reference/decorators/@subdag",
+            "api-reference/decorators/@parameterized_subdag",
             "api-reference/decorators/@resolve"
           ]
         },
